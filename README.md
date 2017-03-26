@@ -1,5 +1,3 @@
-# cmspro
-=======
 # cms后台管理项目<br/>
 Yii 2 Basic Project Template is a skeleton Yii 2 application best for
 rapidly creating small projects.<br/>
@@ -25,3 +23,4 @@ rapidly creating small projects.<br/>
   6. 推荐位操作<br/>
   
 #### 功能模块页面展示如下:<br/>
+![image]()
