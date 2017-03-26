@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # cmspro
 =======
 # cms后台管理项目<br/>
@@ -26,4 +25,3 @@ rapidly creating small projects.<br/>
   6. 推荐位操作<br/>
   
 #### 功能模块页面展示如下:<br/>
->>>>>>> 76fb0ea151bb5a12cbb45ef3a35e65f49165e545
