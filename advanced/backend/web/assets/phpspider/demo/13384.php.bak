@@ -1,0 +1,57 @@
+<?php
+error_reporting(7);
+ini_set("memory_limit", "1024M");
+require dirname(__FILE__).'/../core/init.php';
+
+/* Do NOT delete this comment */
+/* 不要删除这段注释 */
+
+//$html = requests::get("http://www.zhibo8.cc/zuqiu/2017/0319-huangma-jijin.htm");
+//$data = selector::select($html, ".jijin-list > .title > h1", "css");
+//$a = file_put_contents('F:/fengxuechao/wamp/www/zs.html',$data);
+//var_dump($data);die;
+
+$configs = array(
+    'name' => '13384美女图',
+    'tasknum' => 1,
+    //'multiserver' => true,
+    //'log_show' => true,
+    //'save_running_state' => false,
+    'domains' => array(
+        'www.zhibo8.cc'
+    ),
+	
+    'scan_urls' => array(
+        "http://www.zhibo8.cc/zuqiu/2017/0319-huangma-jijin.htm",
+    ),
+    'list_url_regexes' => array(
+        "http://www.zhibo8.cc/zuqiu/2017/0319-huangma-jijin.htm",
+        
+    ),
+	
+    'content_url_regexes' => array(
+        "http://www.zhibo8.cc/zuqiu/2017/0319-huangma-jijin.htm",
+        
+    ),
+    'export' => array(
+		'type' => 'csv', 
+		'file' => PATH_DATA.'/zuqiushuo.csv', // data目录下
+	),
+    'fields' => array(
+		array(
+			'name' => "content",
+			'selector_type' => 'css',
+			'selector' => '.jijin-list > .title > h1', // regex抽取规则
+			'required' => true,
+		)
+        
+    ),
+);
+
+$spider = new phpspider($configs);
+
+
+
+$res = $spider->start();
+
+//var_dump($spider);die;
