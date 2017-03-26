@@ -25,3 +25,23 @@ rapidly creating small projects.<br/>
 #### 功能模块页面展示如下:<br/>
 * 路由模块
 ![route](https://github.com/felixfong/cmspro/blob/master/advanced/backend/web/images/route.jpg)
+* 权限模块
+![permission](https://github.com/felixfong/cmspro/blob/master/advanced/backend/web/images/permission.jpg)
+* 角色模块
+![role](https://github.com/felixfong/cmspro/blob/master/advanced/backend/web/images/role.jpg)
+* 菜单模块
+![menu](https://github.com/felixfong/cmspro/blob/master/advanced/backend/web/images/menu.jpg)
+* 新闻列表
+![newslist](https://github.com/felixfong/cmspro/blob/master/advanced/backend/web/images/newslist.png)
+* 新闻添加
+![newsadd](https://github.com/felixfong/cmspro/blob/master/advanced/backend/web/images/newsadd.jpg)
+* 图片上传
+![imgUp](https://github.com/felixfong/cmspro/blob/master/advanced/backend/web/images/imgUp.jpg)
+* 图片上传成功
+![upSuccess](https://github.com/felixfong/cmspro/blob/master/advanced/backend/web/images/upSuccess.jpg)
+* 操作弹窗
+![reminder](https://github.com/felixfong/cmspro/blob/master/advanced/backend/web/images/reminder.jpg)
+* 视频列表
+![videolist](https://github.com/felixfong/cmspro/blob/master/advanced/backend/web/images/videolist.jpg)
+* 视频采集
+![spider](https://github.com/felixfong/cmspro/blob/master/advanced/backend/web/images/spider.jpg)
