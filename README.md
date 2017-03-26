@@ -23,4 +23,4 @@ rapidly creating small projects.<br/>
   6. 推荐位操作<br/>
   
 #### 功能模块页面展示如下:<br/>
-![image]()
+![image](https://github.com/felixfong/cmspro/blob/master/advanced/backend/web/images/route.jpg)
