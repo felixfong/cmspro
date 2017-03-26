@@ -1,0 +1,207 @@
+<?php
+
+/* @var $this yii\web\View */
+
+$this->title = 'My Yii Application';
+?>
+
+<link href="/css/bootstrap.min.css" rel="stylesheet">
+<link href="/css/bootstrap-table.css" rel="stylesheet">
+
+
+<div class="site-index">
+
+    <section class="content">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="box">
+                    <form name="myform" action="" method="post">
+                        <div class="box-body">
+                            <div id="example2_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+                                <div class="row">
+                                    <div class="col-sm-6"></div>
+                                    <div class="col-sm-6"></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <!--测试table开始-->
+                                        <div id="toolbar">
+                                            <div class="btn btn-primary" data-toggle="modal" data-target="#addModal">添加记录</div>
+                                            <div class="btn btn-primary">
+                                                <span id="btn_checkall">全选</span> / <span id="btn_nocheck">取消</span>
+                                            </div>
+                                            <input id="btn_delete" type="button" name="delete" value=" 删除 " class="btn btn-primary">
+                                        </div>
+                                        <table id="mytab" class="table table-hover"></table>
+
+                                        <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                                            &times;
+                                                        </button>
+                                                        <h4 class="modal-title" id="myModalLabel">添加记录</h4>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <form role="form" action="javascript:void(0)">
+                                                            <div class="form-group">
+                                                                <input type="text" class="form-control" id="name" placeholder="请输入名称">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <input type="text" class="form-control" id="age" placeholder="请输入年龄">
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                                                        <button type="button" class="btn btn-primary" id="addRecord">提交</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!--测试table结束-->
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/bootstrap-table.js"></script>
+<script src="/js/bootstrap-table-zh-CN.js"></script>
+
+<script type="text/javascript">
+    
+	//根据窗口调整表格高度
+	$(window).resize(function() {
+		$('#mytab').bootstrapTable('resetView', {
+			height: tableHeight()
+		})
+	})
+	
+	$('#mytab').bootstrapTable({
+		columns: [{
+			field: 'id',
+			title: 'Item ID'
+		}, {
+			field: 'name',
+			title: 'Item Name'
+		}, {
+			field: 'price',
+			title: 'Item Price'
+		}],
+		data: [{
+			id: 1,
+			name: 'Item 1',
+			price: '$1'
+		}, {
+			id: 2,
+			name: 'Item 2',
+			price: '$2'
+		}]
+	});
+	$('#mytab').bootstrapTable({
+		url: "/news/text",//数据源
+		dataField: "rows",//服务端返回数据键值 就是说记录放的键值是rows，分页时使用总记录数的键值为total
+		height: tableHeight(),//高度调整
+		search: true,//是否搜索
+		striped: true,
+		pagination: true,//是否分页
+		pageSize: 10,//单页记录数
+		pageList: [5, 10, 20, 50],//分页步进值
+		sidePagination: "server",//服务端分页
+		contentType: "application/x-www-form-urlencoded",//请求数据内容格式 默认是 application/json 自己根据格式自行服务端处理
+		dataType: "json",//期待返回数据类型
+		method: "post",//请求方式
+		searchAlign: "right",//查询框对齐方式
+		queryParamsType: "limit",//查询参数组织方式
+		queryParams: function getParams(params) {
+			//params obj
+			params._csrf = "<?php echo Yii::$app->request->getCsrfToken();?>";
+			params.other = "otherInfo";
+			return params;
+		},
+		searchOnEnterKey: false,//回车搜索
+		showRefresh: true,//刷新按钮
+		showColumns: false,//列选择按钮
+		buttonsAlign: "left",//按钮对齐方式
+		toolbar: "#toolbar",//指定工具栏
+		toolbarAlign: "right",//工具栏对齐方式
+		columns: [
+			{
+				title: "全选",
+				field: "select",
+				checkbox: true,
+				width: 50,//宽度
+				align: "center",//水平
+				valign: "middle"//垂直
+			},
+			{
+				field: "id",//键名
+				title: "ID",//标题
+				width: 150,
+				sortable: true,//是否可排序
+				order: "desc"//默认排序方式
+			},
+			{
+				field: "short_title",
+				title: "名称",
+				width: 400,
+				sortable: true,
+				titleTooltip: "this is name"
+			},
+			{
+				field: "publish",
+				title: "采取时间",
+				width: 200,
+				sortable: true,
+			},
+			{
+				field: "id",
+				title: "管理操作",
+				width: 350,
+				formatter: 'infoFormatter',//对本列数据做格式化
+			}
+		],
+		locale: "zh-CN",//中文支持,
+		detailView: false, //是否显示详情折叠
+		detailFormatter: function(index, row, element) {
+			var html = '';
+			$.each(row, function(key, val){
+				html += "<p>" + key + ":" + val +  "</p>"
+			});
+			return html;
+		}
+	});
+	
+	$("#addRecord").click(function(){
+		alert("name:" + $("#name").val() + " age:" +$("#age").val());
+	});
+		
+
+    function tableHeight() {
+        return $(window).height() - 50;
+    }
+    /**
+     * 列的格式化函数 在数据从服务端返回装载前进行处理
+     * @param  {[type]} value [description]
+     * @param  {[type]} row   [description]
+     * @param  {[type]} index [description]
+     * @return {[type]}       [description]
+     */
+	
+    function infoFormatter(value, row, index)
+    {
+
+        var e = '<a href="/news/edit?id=' + row.id + '" class="btn btn-warning" rel="nofollow" mce_href="#" rel="nofollow">编辑</a> ';
+        var d = '<a href="#" class="btn btn-primary" rel="nofollow" mce_href="#" rel="nofollow" onclick="del('+ row.id +')">删除</a> ';
+        return e+d;
+    }
+</script>
