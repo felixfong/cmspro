@@ -24,7 +24,7 @@ rapidly creating small projects.<br/>
      * 视频采集<br/>
   6. 推荐位操作<br/>
   
-#### 功能模块页面展示如下:<br/>
+### 功能模块页面展示如下:<br/>
 * 路由模块
 ![route](https://github.com/felixfong/cmspro/blob/master/advanced/backend/web/images/route.jpg)
 * 权限模块
