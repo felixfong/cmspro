@@ -1,8 +1,10 @@
 # cms后台管理项目<br/>
 Yii 2 Basic Project Template is a skeleton Yii 2 application best for
 rapidly creating small projects.<br/>
-该后台管理采用PHP语言、YII2.0框架开发，可供企业、个人快速搭建管理后台使用。<br/>
-项目中实现的功能模块如下：<br/>
+* 该后台管理采用PHP语言、YII2.0框架开发，可供企业、个人快速搭建管理后台使用。<br/>
+* 后台多采用YII组件、AdminLTE合并开发。<br/>
+* 视频支持规则采集，采用phpspider技术。特别备注：采集只支持CLI模式，可链接MySQL/Redis共同开发。<br/>
+### 项目中实现的功能模块如下：<br/>
   1. RBAC权限控制模块<br/>
      * 路由<br/>
      * 权限<br/>
